@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import './student.css'
+import AddStudent from "./addStudent";
+
 function StudentList() {
     const [students, setStudents] = useState([]);
 
@@ -12,7 +14,13 @@ function StudentList() {
                 setStudents(data)
             })
     },[])
-
+    function deleteStudent(student) {
+        fetch("http://localhost:8080/student/" + student.id, {method: "DELETE"})
+        .then(response => {
+            return;
+        })
+        .catch(error => {console.log(error)})
+    };
 
     return (
         <div>
@@ -29,11 +37,13 @@ function StudentList() {
                             <tr>
                                 <td>  {student.id} </td>
                                 <td>  {student.name} </td>
+                                <td>  <button onClick={() => deleteStudent(student)}>Delete</button> </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             )}
+            <AddStudent />
         </div>
     );
 
