@@ -10,7 +10,7 @@ function AddStudent()  {
  const StudentForm =  () =>  {
      
     const handleCancel = e => {
-          e.preventDefault();
+        e.preventDefault();
         console.log('cancel');
     };
 
@@ -43,7 +43,7 @@ function AddStudent()  {
 
          <label> Email : </label>
          <input type="email" id="email" name="email" value={studentFormData.email} onChange={handleChange}/>
-         
+         <br/>
          <button type="submit" class="primary-button" >Add</button>
          <button className="primary-button" onClick={handleCancel} >Cancel</button>
 
